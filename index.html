@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco Isolador de Pintinhos | Projeto Científico e Tecnológico</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ecoDark: '#070d0a',
+                        ecoCard: 'rgba(18, 30, 22, 0.75)',
+                        ecoBorder: 'rgba(34, 197, 94, 0.25)',
+                        ecoNeon: '#22c55e',
+                        ecoNeonDark: '#16a34a',
+                        ecoAmber: '#f59e0b',
+                        ecoMuted: '#94a3b8'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #070d0a;
+            color: #f1f5f9;
+            font-family: 'Inter', sans-serif;
+            background-image: 
+                radial-gradient(circle at 10% 10%, rgba(34, 197, 94, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(245, 158, 11, 0.05) 0%, transparent 40%);
+            background-attachment: fixed;
+        }
+
+        /* Glassmorphism Cards */
+        .glass-card {
+            background: rgba(18, 30, 22, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(34, 197, 94, 0.22);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        .glass-card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card-hover:hover {
+            transform: translateY(-4px);
+            border-color: rgba(34, 197, 94, 0.5);
+            box-shadow: 0 12px 40px 0 rgba(34, 197, 94, 0.15);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #070d0a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e3a2b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #22c55e;
+        }
+
+        /* Table custom styles */
+        .custom-table th {
+            background: rgba(20, 83, 45, 0.8);
+            color: #22c55e;
+        }
+        .custom-table tr {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            transition: background-color 0.2s;
+        }
+        .custom-table tr:hover {
+            background-color: rgba(34, 197, 94, 0.08);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between antialiased selection:bg-emerald-500 selection:text-black">
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-[#070d0a]/85 border-b border-ecoBorder transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#inicio" class="flex items-center gap-3 group">
+                    <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-emerald-500 to-green-700 p-0.5 flex items-center justify-center shadow-lg shadow-emerald-500/20 group-hover:scale-105 transition-transform">
+                        <div class="w-full h-full bg-[#070d0a] rounded-[10px] flex items-center justify-center">
+                            <svg class="w-6 h-6 text-ecoNeon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="text-lg font-bold tracking-tight text-white block group-hover:text-ecoNeon transition-colors">Eco Isolador</span>
+                        <span class="text-xs text-ecoMuted font-medium block">Projeto Científico Sustentável</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav Navigation -->
+                <nav class="hidden md:flex items-center gap-1">
+                    <a href="#inicio" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-ecoNeon hover:bg-emerald-950/40 transition-all">Início</a>
+                    <a href="#projeto" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-ecoNeon hover:bg-emerald-950/40 transition-all">O Projeto</a>
+                    <a href="#galeria" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-ecoNeon hover:bg-emerald-950/40 transition-all">Galeria & Mídia</a>
+                    <a href="#diario" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-ecoNeon hover:bg-emerald-950/40 transition-all">Diário de Bordo</a>
+                    <a href="#resultados" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-ecoNeon hover:bg-emerald-950/40 transition-all">Resultados & Tabelas</a>
+                    <a href="#contato" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-ecoNeon hover:bg-emerald-950/40 transition-all">Contato</a>
+                </nav>
+
+                <!-- Action Button -->
+                <div class="hidden sm:flex items-center gap-3">
+                    <a href="#diario" class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-black font-semibold px-4 py-2 rounded-xl text-sm transition-all shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 62v6m0-6V4m0 6a2 2 0 100-4 2 2 0 000 4zm0 8a2 2 0 100-4 2 2 0 000 4zm0 8a2 2 0 100-4 2 2 0 000 4z" />
+                        </svg>
+                        Explorar Experimentos
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="md:hidden p-2 rounded-lg text-slate-300 hover:text-ecoNeon hover:bg-emerald-950/40 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path id="menuIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobileMenu" class="hidden md:hidden border-b border-ecoBorder bg-[#070d0a]/95 px-4 pt-2 pb-4 space-y-2">
+            <a href="#inicio" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-300 hover:text-ecoNeon hover:bg-emerald-950/40">Início</a>
+            <a href="#projeto" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-300 hover:text-ecoNeon hover:bg-emerald-950/40">O Projeto</a>
+            <a href="#galeria" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-300 hover:text-ecoNeon hover:bg-emerald-950/40">Galeria & Mídia</a>
+            <a href="#diario" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-300 hover:text-ecoNeon hover:bg-emerald-950/40">Diário de Bordo</a>
+            <a href="#resultados" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-300 hover:text-ecoNeon hover:bg-emerald-950/40">Resultados & Tabelas</a>
+            <a href="#contato" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-300 hover:text-ecoNeon hover:bg-emerald-950/40">Contato</a>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+
+        <!-- Hero Section -->
+        <section id="inicio" class="relative py-16 md:py-24 overflow-hidden border-b border-ecoBorder/40">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center max-w-3xl mx-auto space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-ecoNeon text-xs sm:text-sm font-semibold tracking-wide uppercase shadow-sm">
+                        <span class="w-2 h-2 rounded-full bg-ecoNeon animate-pulse"></span>
+                        Clube De Ciências ! ScienCes
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                        Eco Isolador de <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-green-400 to-amber-300">Pintinhos</span>
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-slate-300 font-normal leading-relaxed">
+                        Desenvolvimento sustentável de placas isolantes térmicas com materiais reutilizáveis e biodegradáveis. Uma alternativa eficiente de baixo custo a partir de papelão reciclado, lã de ovelha e cera de abelha.
+                    </p>
+
+                    <!-- KPI Stats Grid -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-6">
+                        <div class="glass-card p-4 rounded-2xl text-center">
+                            <span class="block text-2xl md:text-3xl font-extrabold text-ecoNeon">3</span>
+                            <span class="text-xs text-ecoMuted font-medium uppercase tracking-wider">Protótipos Testados</span>
+                        </div>
+                        <div class="glass-card p-4 rounded-2xl text-center">
+                            <span class="block text-2xl md:text-3xl font-extrabold text-ecoNeon">0%</span>
+                            <span class="text-xs text-ecoMuted font-medium uppercase tracking-wider">Chama na Lã</span>
+                        </div>
+                        <div class="glass-card p-4 rounded-2xl text-center">
+                            <span class="block text-2xl md:text-3xl font-extrabold text-amber-400">28°C</span>
+                            <span class="text-xs text-ecoMuted font-medium uppercase tracking-wider">Retenção Térmica</span>
+                        </div>
+                        <div class="glass-card p-4 rounded-2xl text-center">
+                            <span class="block text-2xl md:text-3xl font-extrabold text-ecoNeon">100%</span>
+                            <span class="text-xs text-ecoMuted font-medium uppercase tracking-wider">Biodegradável</span>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap justify-center gap-4 pt-4">
+                        <a href="#galeria" class="bg-emerald-500 hover:bg-emerald-400 text-black font-semibold px-6 py-3.5 rounded-xl text-base transition-all shadow-xl shadow-emerald-500/25 flex items-center gap-2">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                            Ver Fotografias e Vídeo
+                        </a>
+                        <a href="#resultados" class="glass-card hover:bg-emerald-950/40 text-slate-200 font-semibold px-6 py-3.5 rounded-xl text-base transition-all border border-ecoBorder flex items-center gap-2">
+                            <svg class="w-5 h-5 text-ecoNeon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 002 2h2a2 2 0 002-2z" />
+                            </svg>
+                            Tabelas de Temperatura
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção O Projeto -->
+        <section id="projeto" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass-card rounded-3xl p-6 sm:p-10 mb-12">
+                <div class="max-w-3xl">
+                    <span class="text-ecoNeon text-xs sm:text-sm font-bold tracking-wider uppercase block mb-2">Fundamentação Científica</span>
+                    <h2 class="text-3xl font-bold text-white mb-6">Apresentação do Projeto</h2>
+                    <p class="text-slate-300 leading-relaxed text-base sm:text-lg mb-4">
+                        O projeto <strong class="text-ecoNeon">Eco Isolador de Pintinhos</strong> foi desenvolvido com o propósito de criar uma alternativa sustentável, eficiente e de baixo custo para o aquecimento e isolamento térmico na criação de pintinhos nos primeiros dias de vida.
+                    </p>
+                    <p class="text-slate-300 leading-relaxed text-base sm:text-lg">
+                        Utilizando materiais reutilizáveis como o papelão e componentes naturais como a <strong class="text-white">lã de ovelha</strong> e a <strong class="text-white">cera de abelha</strong>, o projeto busca substituir isolantes sintéticos tradicionais (como o isopor) por soluções biodegradáveis que oferecem excelente retenção do calor, garantindo a proteção e o bem-estar dos animais.
+                    </p>
+                </div>
+
+                <!-- Benefícios Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
+                    <div class="glass-card p-6 rounded-2xl border border-emerald-500/20 glass-card-hover">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-ecoNeon text-2xl mb-4">
+                            🌱
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Sustentabilidade</h3>
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            Utiliza papelão reaproveitado, lã de ovelha e cera de abelha, reduzindo a pegada ecológica e evitando o descarte em aterros.
+                        </p>
+                    </div>
+
+                    <div class="glass-card p-6 rounded-2xl border border-emerald-500/20 glass-card-hover">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-ecoNeon text-2xl mb-4">
+                            💡
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Eficiência Térmica</h3>
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            A lã de ovelha e a cera atuam de forma sinérgica conservando o calor interno sem quedas bruscas de temperatura.
+                        </p>
+                    </div>
+
+                    <div class="glass-card p-6 rounded-2xl border border-emerald-500/20 glass-card-hover">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-ecoNeon text-2xl mb-4">
+                            💰
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Baixo Custo</h3>
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            Alternativa extremamente acessível para avicultores familiares e pequenos produtores rurais em regiões frias.
+                        </p>
+                    </div>
+
+                    <div class="glass-card p-6 rounded-2xl border border-emerald-500/20 glass-card-hover">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-ecoNeon text-2xl mb-4">
+                            🛡️
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Segurança Antifogo</h3>
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            Ensaios práticos comprovam que a lã não propaga chamas e não produz gotículas plásticas incandescentes perigosas.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Galeria de Fotografias Reais -->
+        <section id="galeria" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+                <div>
+                    <span class="text-ecoNeon text-xs sm:text-sm font-bold tracking-wider uppercase block mb-2">Registros de Campo & Prototipagem</span>
+                    <h2 class="text-3xl font-bold text-white">Galeria de Fotografias Reais</h2>
+                </div>
+                <p class="text-sm text-ecoMuted max-w-md">
+                    Clique em qualquer fotografia para ampliar no modo de visualização em detalhes (Lightbox).
+                </p>
+            </div>
+
+            <!-- Grid de 7 Fotografias Embutidas -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+
+                <!-- Card Foto 1 -->
+                <div class="glass-card rounded-2xl overflow-hidden glass-card-hover cursor-pointer group" onclick="openLightbox('')">
+                    <div class="relative h-52 bg-slate-950 overflow-hidden">
+                        <img src="foto2.jpg.jpg" alt="">
+                        <!-- Custom Vector Illustration Asset for Photography 1 -->
+                        <div class="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-emerald-950 via-slate-900 to-black p-4 text-center group-hover:scale-105 transition-transform duration-500">
+                            <svg class="w-16 h-16 text-emerald-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879M12 12L9.121 9.121m0 0L4 4m5.121 5.121L4 14.121M12 12l2.879-2.879M12 12L9.121 14.121" />
+                            </svg>
+                            <span class="text-xs font-semibold text-emerald-300">Medição & Corte de Papelão</span>
+                            <span class="text-[10px] text-slate-400 mt-1">Laboratório • 13/08</span>
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                        <span class="absolute top-3 left-3 bg-emerald-500/20 border border-emerald-500/40 text-ecoNeon text-[11px] font-bold px-2.5 py-1 rounded-full backdrop-blur-md">
+                            Foto 1
+                        </span>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-bold text-white text-base group-hover:text-ecoNeon transition-colors">Montagem e Corte de Papelão</h4>
+                        <p class="text-xs text-slate-300 mt-1">Aluno no laboratório efetuando a medição e corte das placas reutilizadas.</p>
+                    </div>
+                </div>
+
+                <!-- Card Foto 2 -->
+                <div class="glass-card rounded-2xl overflow-hidden glass-card-hover cursor-pointer group" onclick="openLightbox('')">
+                    <div class="relative h-52 bg-slate-950 overflow-hidden">
+                        <img src="foto1.jpg.jpg" alt="">
+                        <div class="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-blue-950 via-slate-900 to-emerald-950 p-4 text-center group-hover:scale-105 transition-transform duration-500">
+                            <svg class="w-16 h-16 text-blue-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                            </svg>
+                            <span class="text-xs font-semibold text-blue-300">Casinha Decorada Pronta</span>
+                            <span class="text-[10px] text-slate-400 mt-1">Acabamento EVA • 27/08</span>
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                        <span class="absolute top-3 left-3 bg-emerald-500/20 border border-emerald-500/40 text-ecoNeon text-[11px] font-bold px-2.5 py-1 rounded-full backdrop-blur-md">
+                            Foto 2
+                        </span>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-bold text-white text-base group-hover:text-ecoNeon transition-colors">Estrutura Finalizada</h4>
+                        <p class="text-xs text-slate-300 mt-1">Casinha decorada com EVA azul, desenhos de pintinhos e ovelhas.</p>
+                    </div>
+                </div>
+
+                <!-- Card Foto 3 -->
+                <div class="glass-card rounded-2xl overflow-hidden glass-card-hover cursor-pointer group" onclick="openLightbox('')">
+                    <div class="relative h-52 bg-slate-950 overflow-hidden">
+                        <img src="foto4.jpg.jpg" alt="">
+                        <div class="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-red-950 via-slate-900 to-amber-950 p-4 text-center group-hover:scale-105 transition-transform duration-500">
+                            <svg class="w-16 h-16 text-amber-500 mb-2 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 1-5 4-6 1 2 1 3 3 4 2 1 3 3 2 5a7.962 7.962 0 01-1.343 5.657z" />
+                            </svg>
+                            <span class="text-xs font-semibold text-amber-400">Teste de Chama no Isopor</span>
+                            <span class="text-[10px] text-slate-400 mt-1">Ensaio Laboratorial • 17/09</span>
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                        <span class="absolute top-3 left-3 bg-emerald-500/20 border border-emerald-500/40 text-ecoNeon text-[11px] font-bold px-2.5 py-1 rounded-full backdrop-blur-md">
+                            Foto 3
+                        </span>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-bold text-white text-base group-hover:text-ecoNeon transition-colors">Teste de Inflamabilidade</h4>
+                        <p class="text-xs text-slate-300 mt-1">Ensaio com lamparina a incidir diretamente sobre a placa de isopor.</p>
+                    </div>
+                </div>
+
+                <!-- Card Foto 4 -->
+                <div class="glass-card rounded-2xl overflow-hidden glass-card-hover cursor-pointer group" onclick="openLightbox('')">
+                    <div class="relative h-52 bg-slate-950 overflow-hidden">
+                        <img src="foto5.jpg.jpg" alt="">
+                        <div class="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-amber-950 via-stone-900 to-slate-950 p-4 text-center group-hover:scale-105 transition-transform duration-500">
+                            <svg class="w-16 h-16 text-amber-300 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                            </svg>
+                            <span class="text-xs font-semibold text-amber-200">Amostras Pós-Fogo</span>
+                            <span class="text-[10px] text-slate-400 mt-1">Isopor vs Lã com Cera • 17/09</span>
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                        <span class="absolute top-3 left-3 bg-emerald-500/20 border border-emerald-500/40 text-ecoNeon text-[11px] font-bold px-2.5 py-1 rounded-full backdrop-blur-md">
+                            Foto 4
+                        </span>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-bold text-white text-base group-hover:text-ecoNeon transition-colors">Amostras Comparativas Pós-Fogo</h4>
+                        <p class="text-xs text-slate-300 mt-1">Placas de isopor queimado, lã com cera de abelha e fibra de lã.</p>
+                    </div>
+                </div>
+
+                <!-- Card Foto 5 -->
+                <div class="glass-card rounded-2xl overflow-hidden glass-card-hover cursor-pointer group" onclick="openLightbox('')">
+                    <div class="relative h-52 bg-slate-950 overflow-hidden">
+                        <img src="foto3.jpg.jpg" alt="">
+                        <div class="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-yellow-950 via-slate-900 to-emerald-950 p-4 text-center group-hover:scale-105 transition-transform duration-500">
+                            <svg class="w-16 h-16 text-yellow-500 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                            </svg>
+                            <span class="text-xs font-semibold text-yellow-300">Simulação com Serragem</span>
+                            <span class="text-[10px] text-slate-400 mt-1">Ensaio Umidade • 24/09</span>
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                        <span class="absolute top-3 left-3 bg-emerald-500/20 border border-emerald-500/40 text-ecoNeon text-[11px] font-bold px-2.5 py-1 rounded-full backdrop-blur-md">
+                            Foto 5
+                        </span>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-bold text-white text-base group-hover:text-ecoNeon transition-colors">Simulação de Umidade com Serradura</h4>
+                        <p class="text-xs text-slate-300 mt-1">Placas cobertas com serragem e água para verificação de fungos.</p>
+                    </div>
+                </div>
+
+                <!-- Card Foto 6 -->
+                <div class="glass-card rounded-2xl overflow-hidden glass-card-hover cursor-pointer group" onclick="openLightbox(')">
+                    <div class="relative h-52 bg-slate-950 overflow-hidden">
+                        <img src="foto6.jpg.jpg" alt="">
+                        <div class="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-emerald-950 via-slate-900 to-teal-950 p-4 text-center group-hover:scale-105 transition-transform duration-500">
+                            <svg class="w-16 h-16 text-teal-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 002 2h2a2 2 0 002-2z" />
+                            </svg>
+                            <span class="text-xs font-semibold text-teal-300">Medição Térmica Interna</span>
+                            <span class="text-[10px] text-slate-400 mt-1">Termômetro & Lâmpada • 28/09</span>
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                        <span class="absolute top-3 left-3 bg-emerald-500/20 border border-emerald-500/40 text-ecoNeon text-[11px] font-bold px-2.5 py-1 rounded-full backdrop-blur-md">
+                            Foto 6
+                        </span>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-bold text-white text-base group-hover:text-ecoNeon transition-colors">Medição Térmica Interna</h4>
+                        <p class="text-xs text-slate-300 mt-1">Visão interior com termômetro de medição e lâmpada acesa.</p>
+                    </div>
+                </div>
+
+                <!-- Card Foto 7 -->
+                <div class="glass-card rounded-2xl overflow-hidden glass-card-hover cursor-pointer group" onclick="openLightbox()">
+                    <div class="relative h-52 bg-slate-950 overflow-hidden">
+                        <img src="foto7.jpg.jpg" alt="">
+                        <div class="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-green-950 via-slate-900 to-amber-950 p-4 text-center group-hover:scale-105 transition-transform duration-500">
+                            <svg class="w-16 h-16 text-emerald-300 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+                            </svg>
+                            <span class="text-xs font-semibold text-emerald-200">Revestimento Interno Lã/Cera</span>
+                            <span class="text-[10px] text-slate-400 mt-1">Câmara de Aquecimento</span>
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                        <span class="absolute top-3 left-3 bg-emerald-500/20 border border-emerald-500/40 text-ecoNeon text-[11px] font-bold px-2.5 py-1 rounded-full backdrop-blur-md">
+                            Foto 7
+                        </span>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-bold text-white text-base group-hover:text-ecoNeon transition-colors">Revestimento Interno</h4>
+                        <p class="text-xs text-slate-300 mt-1">Vista frontal da câmara isolante revestida com lã de ovelha e cera.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Seção de Vídeo da Entrevista -->
+            <div class="mt-16 glass-card rounded-3xl p-6 sm:p-10 border border-ecoBorder">
+                <div class="flex flex-col lg:flex-row items-center gap-8">1
+                    <div class="lg:w-1/2 space-y-4">
+                        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-ecoNeon text-xs font-bold uppercase">
+                            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M8 5v14l11-7z" />
+                            </svg>
+                            Entrevista em Vídeo
+                        </span>
+                        <h3 class="text-2xl sm:text-3xl font-bold text-white">Relato do Processo Científico</h3>
+                        <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                            Acompanhe a entrevista gravada no laboratório com os alunos autores, detalhando os desafios no controle de temperatura, o combate à umidade e a substituição viável do isopor.
+                        </p>
+                        
+                        <div class="p-4 rounded-xl bg-emerald-950/40 border border-emerald-500/30 text-xs text-slate-300 space-y-2">
+                            <p class="font-semibold text-ecoNeon">💡 Como assistir:</p>
+                            <p>O reprodutor abaixo carrega o arquivo <code class="text-amber-300 font-mono">entrevista.mp4</code>. Caso queira testar um novo arquivo local, utilize o botão de carregamento abaixo.</p>
+                        </div>
+
+                        <label class="inline-flex items-center gap-2 bg-emerald-500/20 hover:bg-emerald-500/30 border border-ecoNeon text-ecoNeon font-semibold px-4 py-2.5 rounded-xl text-sm cursor-pointer transition-all">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+                            </svg>
+                            Carregar Vídeo Local (MP4)
+                            <input type="file" accept="video/*" class="hidden" onchange="carregarVideoLocal(event)">
+                        </label>
+                    </div>
+
+                    <div class="lg:w-1/2 w-full">
+                        <div class="relative rounded-2xl overflow-hidden bg-slate-950 border border-emerald-500/30 shadow-2xl group">
+                            <video id="videoPlayer" controls class="w-full aspect-video object-cover">
+                                <source src="entrevista.mp4" type="video/mp4">
+                                O seu navegador não suporta o formato de vídeo MP4.
+                            </video>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Diário de Bordo -->
+        <section id="diario" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+                <div>
+                    <span class="text-ecoNeon text-xs sm:text-sm font-bold tracking-wider uppercase block mb-2">Acompanhamento Etapa por Etapa</span>
+                    <h2 class="text-3xl font-bold text-white">Diário de Bordo Integral</h2>
+                </div>
+                
+                <!-- Filter Buttons and Search -->
+                <div class="flex flex-wrap items-center gap-3">
+                    <div class="flex rounded-xl bg-slate-900/80 p-1 border border-ecoBorder">
+                        <button onclick="filtrarDiario('todos', this)" class="btn-filter active-filter px-3.5 py-1.5 rounded-lg text-xs font-bold text-white transition-all bg-emerald-500 text-black shadow">Todos</button>
+                        <button onclick="filtrarDiario('construcao', this)" class="btn-filter px-3.5 py-1.5 rounded-lg text-xs font-bold text-slate-400 hover:text-white transition-all">Construção</button>
+                        <button onclick="filtrarDiario('testes', this)" class="btn-filter px-3.5 py-1.5 rounded-lg text-xs font-bold text-slate-400 hover:text-white transition-all">Testes</button>
+                    </div>
+
+                    <div class="relative">
+                        <input type="text" id="diarioSearch" onkeyup="buscarDiario()" placeholder="Pesquisar registro..." class="bg-slate-900/80 text-white text-xs px-3.5 py-2 pl-8 rounded-xl border border-ecoBorder focus:outline-none focus:border-ecoNeon w-40 sm:w-48 transition-all">
+                        <svg class="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Timeline Entries list -->
+            <div id="diarioList" class="space-y-6">
+
+                <!-- Entry 1 -->
+                <div class="diario-item glass-card p-6 sm:p-8 rounded-2xl border border-ecoBorder transition-all" data-categoria="construcao">
+                    <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+                        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 text-ecoNeon text-xs font-bold border border-emerald-500/40">
+                            📅 06/08 — Quinta-feira
+                        </span>
+                        <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 uppercase tracking-wider">Construção e Montagem</span>
+                    </div>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed text-justify">
+                        Na quinta-feira dia 06/08, iniciamos com o preparo da lã. Primeiramente, realizamos a limpeza e a preparação do material, retirando a casca e as partes que não seriam utilizadas. Essa etapa foi feita com bastante cuidado para evitar que a lã fosse danificada durante o processo. Em seguida, fizemos a separação e organização da lã, deixando o material mais limpo e adequado para continuar o trabalho. Também observamos suas características e verificamos se havia alguma parte que precisava ser retirada ou ajustada. Esse procedimento foi importante para garantir uma melhor qualidade do material e facilitar as próximas etapas da produção. Ao final do processo, deixamos a lã preparada e organizada para dar continuidade ao projeto nos próximos dias.
+                    </p>
+                </div>
+
+                <!-- Entry 2 -->
+                <div class="diario-item glass-card p-6 sm:p-8 rounded-2xl border border-ecoBorder transition-all" data-categoria="construcao">
+                    <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+                        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 text-ecoNeon text-xs font-bold border border-emerald-500/40">
+                            📅 13/08 — Quinta-feira
+                        </span>
+                        <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 uppercase tracking-wider">Construção e Montagem</span>
+                    </div>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed text-justify">
+                        Na quinta-feira, dia 13/08, começamos a construção da casinha que faria parte do nosso projeto. Para isso, utilizamos papelão, pois decidimos trabalhar com materiais reutilizáveis, aproveitando materiais que pudessem ser descartados. Primeiro, separamos os pedaços de papelão e começamos a medir e cortar cada um de acordo com o tamanho planejado para a casinha.
+                    </p>
+                </div>
+
+                <!-- Entry 3 -->
+                <div class="diario-item glass-card p-6 sm:p-8 rounded-2xl border border-ecoBorder transition-all" data-categoria="construcao">
+                    <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+                        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 text-ecoNeon text-xs font-bold border border-emerald-500/40">
+                            📅 20/08 — Quinta-feira
+                        </span>
+                        <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 uppercase tracking-wider">Construção e Montagem</span>
+                    </div>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed text-justify">
+                        Na quinta-feira 20/08, continuamos com mais uma etapa do nosso projeto. Primeiro, começamos a preparar a cola que será utilizada para fixar a lã de ovelha nas placas de papelão. Depois de preparar a cola, começamos a colar cuidadosamente a lã sobre as placas, procurando distribuí-la de maneira uniforme e cobrir toda a superfície. Em seguida, demos continuidade ao processo aplicando a cera de abelha sobre a lã. Essa etapa foi realizada com cuidado para que a cera ficasse bem espalhada e aderisse corretamente à lã. Essa atividade foi importante para dar continuidade ao desenvolvimento do nosso projeto, além de nos permitir conhecer melhor os materiais utilizados e entender como eles poderiam contribuir para a construção da casinha.
+                    </p>
+                </div>
+
+                <!-- Entry 4 -->
+                <div class="diario-item glass-card p-6 sm:p-8 rounded-2xl border border-ecoBorder transition-all" data-categoria="construcao">
+                    <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+                        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 text-ecoNeon text-xs font-bold border border-emerald-500/40">
+                            📅 27/08
+                        </span>
+                        <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 uppercase tracking-wider">Construção e Montagem</span>
+                    </div>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed text-justify">
+                        No dia 27/08, começamos a montar a estrutura da nossa casinha. Primeiro, juntamos as placas de papelão com a lã para prender e formar as partes da casinha. Depois que todas as partes foram unidas e a estrutura ficou pronta, começamos a enfeitar e decorar. Para esta etapa, utilizamos EVA, cola quente e um pouco de lã de ovelha, criando os detalhes da casinha e deixando-a mais bonita e colorida. Trabalhamos para decidir onde colocar cada parte da decoração, dando forma ao que tínhamos planejado para o projeto. Essa etapa foi importante para dar uma aparência mais próxima do resultado que imaginávamos.
+                    </p>
+                </div>
+
+                <!-- Entry 5 -->
+                <div class="diario-item glass-card p-6 sm:p-8 rounded-2xl border border-ecoBorder transition-all" data-categoria="construcao">
+                    <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+                        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 text-ecoNeon text-xs font-bold border border-emerald-500/40">
+                            📅 03/09 — Quinta-feira
+                        </span>
+                        <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 uppercase tracking-wider">Construção e Prototipagem</span>
+                    </div>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed text-justify">
+                        No dia 03/09 na quinta-feira, terminamos a decoração da casinha e deixamos todos os detalhes preparados para dar continuidade ao projeto. Depois disso, começamos a produzir os protótipos que serão utilizados para representar as ideias do nosso trabalho. Ao todo, fizemos seis protótipos: dois utilizando placas de papelão com fibra de lã, dois utilizando placas de papelão com lã e mel [cera], e outros dois feitos com placas de papelão com isopor.
+                    </p>
+                </div>
+
+                <!-- Entry 6 -->
+                <div class="diario-item glass-card p-6 sm:p-8 rounded-2xl border border-ecoBorder transition-all" data-categoria="construcao">
+                    <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+                        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 text-ecoNeon text-xs font-bold border border-emerald-500/40">
+                            📅 10/09
+                        </span>
+                        <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 uppercase tracking-wider">Construção e Ajustes</span>
+                    </div>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed text-justify">
+                        No dia 10/09, fizemos a finalização dos protótipos que havíamos começado anteriormente. Nessa etapa, terminamos os detalhes que ainda faltavam e fizemos os últimos ajustes para que todos ficassem bem estruturados, firmes e apresentáveis. Também verificamos se os materiais estavam bem fixados e se os protótipos estavam de acordo com o que havíamos planejado durante o desenvolvimento do nosso projeto.
+                    </p>
+                </div>
+
+                <!-- Entry 7 -->
+                <div class="diario-item glass-card p-6 sm:p-8 rounded-2xl border border-ecoBorder transition-all" data-categoria="testes">
+                    <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+                        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/20 text-amber-400 text-xs font-bold border border-amber-500/40">
+                            🧪 17/09 — Testes de Inflamabilidade
+                        </span>
+                        <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-amber-950/60 text-amber-300 uppercase tracking-wider">Testes Científicos</span>
+                    </div>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed text-justify mb-4">
+                        No dia 17/09, iniciamos os primeiros testes dos protótipos desenvolvidos para o projeto. O objetivo foi avaliar características como inflamabilidade, resistência e o comportamento dos materiais quando expostos ao fogo.
+                    </p>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed text-justify">
+                        Após os testes de inflamabilidade, espalhamos serragem de madeira sobre as placas para simular os resíduos presentes no ambiente de criação de pintinhos. Durante a semana, estamos realizando borrifações de água, quase todos os dias para representar a umidade. Com esse procedimento, estamos observando se os protótipos desenvolvem fungos ou apresentam outras alterações quando submetidos a condições semelhantes às encontradas no uso real, avaliando sua resistência e durabilidade.
+                    </p>
+                </div>
+
+                <!-- Entry 8 -->
+                <div class="diario-item glass-card p-6 sm:p-8 rounded-2xl border border-ecoBorder transition-all" data-categoria="testes">
+                    <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+                        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/20 text-amber-400 text-xs font-bold border border-amber-500/40">
+                            🧪 24/09 — Quinta-feira
+                        </span>
+                        <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-amber-950/60 text-amber-300 uppercase tracking-wider">Testes de Umidade</span>
+                    </div>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed text-justify mb-3">
+                        Na quinta-feira, dia 24/09, nós continuamos o processo de umidificação das placas com serragem, dando sequência aos testes iniciados anteriormente para avaliar o comportamento dos protótipos em condições de maior umidade. Após umedecermos as placas, iniciamos a preparação de uma nova etapa do experimento, com o objetivo de observar a resistência dos materiais e verificar a possível formação de fungos ao longo do tempo.
+                    </p>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed text-justify">
+                        Para a realização desse teste, separamos pequenos pedaços de cada protótipo e os colocamos em recipientes individuais: um pote com a placa de papelão com lã de ovelha e cera de abelha, outro pote com a placa de fibra de lã de ovelha e o terceiro pote com a placa de isopor. Após a montagem dos recipientes, eles foram armazenados para acompanhamento periódico de fungos e degradação.
+                    </p>
+                </div>
+
+                <!-- Entry 9 -->
+                <div class="diario-item glass-card p-6 sm:p-8 rounded-2xl border border-ecoBorder transition-all" data-categoria="testes">
+                    <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+                        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/20 text-amber-400 text-xs font-bold border border-amber-500/40">
+                            🧪 28/09 — Segunda-feira
+                        </span>
+                        <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-amber-950/60 text-amber-300 uppercase tracking-wider">Medição Térmica (Aquecimento)</span>
+                    </div>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed text-justify">
+                        Na segunda-feira, dia 28/09, realizamos o teste de temperatura dos três casinhos de aquecimento desenvolvidos para o projeto: a casinha com lã de ovelha e cera de abelha, a casinha com fibra de lã de ovelha e a casinha com isopor. Para a realização do experimento, foi instalada uma lâmpada em cada casinha para servir como fonte de calor. Em seguida, monitoramos a temperatura interna das estruturas, realizando medições a cada dois minutos durante um período de 20 min. Todos os dados obtidos foram registrados em uma tabela para posterior análise. O objetivo desse teste foi comparar a capacidade de isolamento térmico dos diferentes materiais utilizados nas placas e verificar qual deles apresentou melhor conservação do calor.
+                    </p>
+                </div>
+
+                <!-- Entry 10 -->
+                <div class="diario-item glass-card p-6 sm:p-8 rounded-2xl border border-ecoBorder transition-all" data-categoria="testes">
+                    <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+                        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/20 text-amber-400 text-xs font-bold border border-amber-500/40">
+                            🧪 29/09 — Terça-feira
+                        </span>
+                        <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-amber-950/60 text-amber-300 uppercase tracking-wider">Medição Térmica (Resfriamento)</span>
+                    </div>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed text-justify">
+                        No dia 29/09 (terça-feira), realizamos o teste de resfriamento dos protótipos desenvolvidos para o projeto. Os materiais analisados foram uma placa de papelão com lã de ovelha e mel de abelha, uma placa de papelão com fibra de lã e uma placa de papelão com isopor. Inicialmente, a lâmpada foi mantida ligada dentro da caixa por 30 minutos para aquecer o ambiente interno e os materiais. Após esse período, a lâmpada foi desligada e iniciou-se o teste de resfriamento. Durante o resfriamento, a temperatura interna da caixa foi medida a cada 2 minutos. Os dados coletados permitiram comparar a capacidade de isolamento térmico de cada placa e verificar qual material conservou o calor por mais tempo.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Seção Resultados e Tabelas -->
+        <section id="resultados" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-8">
+                <span class="text-ecoNeon text-xs sm:text-sm font-bold tracking-wider uppercase block mb-2">Dados Experimentais</span>
+                <h2 class="text-3xl font-bold text-white">Resultados & Tabelas Comparativas</h2>
+            </div>
+
+            <!-- Tabela 1: Inflamabilidade -->
+            <div class="glass-card rounded-3xl p-6 sm:p-8 mb-10 border border-ecoBorder">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-lg">1</div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white">Tabela 1: Ensaio de Inflamabilidade e Comportamento ao Fogo (17/09)</h3>
+                        <p class="text-xs text-ecoMuted">Comparativo físico após incidência direta de chama</p>
+                    </div>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm text-left custom-table rounded-xl overflow-hidden">
+                        <thead>
+                            <tr>
+                                <th class="p-4">Protótipos</th>
+                                <th class="p-4 text-center">Cor Pós-Ensaio</th>
+                                <th class="p-4 text-center">Odor Notado</th>
+                                <th class="p-4 text-center">Inflamabilidade</th>
+                                <th class="p-4 text-center">Pingou / Gotejou?</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-white/10 text-slate-200">
+                            <tr>
+                                <td class="p-4 font-bold text-emerald-400">1. Placa de Lã com Cera</td>
+                                <td class="p-4 text-center">Continua a mesma</td>
+                                <td class="p-4 text-center">Cheiro de mel e desagradável</td>
+                                <td class="p-4 text-center"><span class="px-2.5 py-1 rounded-full bg-emerald-500/20 text-ecoNeon text-xs font-bold">Não</span></td>
+                                <td class="p-4 text-center"><span class="px-2.5 py-1 rounded-full bg-amber-500/20 text-amber-300 text-xs font-bold">Sim</span></td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 font-bold text-red-400">2. Placa de Isopor</td>
+                                <td class="p-4 text-center text-red-300">Cor preta (carbonizado)</td>
+                                <td class="p-4 text-center">Plástico queimado sintético</td>
+                                <td class="p-4 text-center"><span class="px-2.5 py-1 rounded-full bg-red-500/20 text-red-400 text-xs font-bold">Sim</span></td>
+                                <td class="p-4 text-center"><span class="px-2.5 py-1 rounded-full bg-red-500/20 text-red-400 text-xs font-bold">Sim (derretimento tóxico)</span></td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 font-bold text-teal-400">3. Placa de Fibra de Lã</td>
+                                <td class="p-4 text-center">Cor mais escura</td>
+                                <td class="p-4 text-center">Marshmallow queimado e fumaça</td>
+                                <td class="p-4 text-center"><span class="px-2.5 py-1 rounded-full bg-emerald-500/20 text-ecoNeon text-xs font-bold">Não</span></td>
+                                <td class="p-4 text-center"><span class="px-2.5 py-1 rounded-full bg-emerald-500/20 text-ecoNeon text-xs font-bold">Não</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Interactive Chart & Tables Grid for Heating and Cooling -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
+
+                <!-- Tabela 2: Aquecimento -->
+                <div class="glass-card rounded-3xl p-6 border border-ecoBorder flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-ecoNeon flex items-center justify-center font-bold text-lg">2</div>
+                            <div>
+                                <h3 class="text-lg font-bold text-white">Tabela 2: Aquecimento Interno (28/09)</h3>
+                                <p class="text-xs text-ecoMuted">Evolução com lâmpada acesa (0 a 20 minutos)</p>
+                            </div>
+                        </div>
+
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-xs text-center custom-table rounded-xl overflow-hidden">
+                                <thead>
+                                    <tr>
+                                        <th class="p-2.5">Tempo</th>
+                                        <th class="p-2.5">Lã com Cera (°C)</th>
+                                        <th class="p-2.5">Fibra de Lã (°C)</th>
+                                        <th class="p-2.5">Isopor (°C)</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-white/10 text-slate-300 font-medium">
+                                    <tr><td class="p-2 font-bold text-white">Início</td><td class="p-2">20</td><td class="p-2">20</td><td class="p-2">20</td></tr>
+                                    <tr><td class="p-2 font-bold text-white">2 min</td><td class="p-2 text-emerald-400">26</td><td class="p-2">43</td><td class="p-2">55</td></tr>
+                                    <tr><td class="p-2 font-bold text-white">4 min</td><td class="p-2 text-emerald-400">29</td><td class="p-2">57</td><td class="p-2">61</td></tr>
+                                    <tr><td class="p-2 font-bold text-white">6 min</td><td class="p-2 text-emerald-400">30</td><td class="p-2">60</td><td class="p-2">70</td></tr>
+                                    <tr><td class="p-2 font-bold text-white">8 min</td><td class="p-2 text-emerald-400">33</td><td class="p-2">66</td><td class="p-2">75</td></tr>
+                                    <tr><td class="p-2 font-bold text-white">10 min</td><td class="p-2 text-emerald-400">33</td><td class="p-2">67</td><td class="p-2">78</td></tr>
+                                    <tr><td class="p-2 font-bold text-white">12 min</td><td class="p-2 text-emerald-400">34</td><td class="p-2">65</td><td class="p-2">77</td></tr>
+                                    <tr><td class="p-2 font-bold text-white">14 min</td><td class="p-2 text-emerald-400">35</td><td class="p-2">66</td><td class="p-2">66</td></tr>
+                                    <tr><td class="p-2 font-bold text-white">16 min</td><td class="p-2 text-emerald-400">40</td><td class="p-2">68</td><td class="p-2">78</td></tr>
+                                    <tr><td class="p-2 font-bold text-white">18 min</td><td class="p-2 text-emerald-400">40</td><td class="p-2">79</td><td class="p-2">67</td></tr>
+                                    <tr><td class="p-2 font-bold text-white">20 min</td><td class="p-2 text-emerald-400 font-bold">37</td><td class="p-2">72</td><td class="p-2">53</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tabela 3: Resfriamento -->
+                <div class="glass-card rounded-3xl p-6 border border-ecoBorder flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-xl bg-teal-500/20 text-teal-400 flex items-center justify-center font-bold text-lg">3</div>
+                            <div>
+                                <h3 class="text-lg font-bold text-white">Tabela 3: Resfriamento Interno (29/09)</h3>
+                                <p class="text-xs text-ecoMuted">Dissipação após desligar lâmpada (0 a 20 minutos)</p>
+                            </div>
+                        </div>
+
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-xs text-center custom-table rounded-xl overflow-hidden">
+                                <thead>
+                                    <tr>
+                                        <th class="p-2.5">Tempo</th>
+                                        <th class="p-2.5">Lã com Cera (°C)</th>
+                                        <th class="p-2.5">Fibra de Lã (°C)</th>
+                                        <th class="p-2.5">Isopor (°C)</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-white/10 text-slate-300 font-medium">
+                                    <tr><td class="p-2 font-bold text-white">Início</td><td class="p-2">31</td><td class="p-2">60</td><td class="p-2">47</td></tr>
+                                    <tr><td class="p-2 font-bold text-white">2 min</td><td class="p-2 text-emerald-400">30</td><td class="p-2">43</td><td class="p-2">36</td></tr>
+                                    <tr><td class="p-2 font-bold text-white">4 min</td><td class="p-2 text-emerald-400">30</td><td class="p-2">36</td><td class="p-2">31</td></tr>
+                                    <tr><td class="p-2 font-bold text-white">6 min</td><td class="p-2 text-emerald-400">29</td><td class="p-2">32</td><td class="p-2">28</td></tr>
+                                    <tr><td class="p-2 font-bold text-white">8 min</td><td class="p-2 text-emerald-400">28</td><td class="p-2">29</td><td class="p-2">26</td></tr>
+                                    <tr><td class="p-2 font-bold text-white">10 min</td><td class="p-2 text-emerald-400">28</td><td class="p-2">28</td><td class="p-2">25</td></tr>
+                                    <tr><td class="p-2 font-bold text-white">12 min</td><td class="p-2 text-emerald-400">28</td><td class="p-2">26</td><td class="p-2">24</td></tr>
+                                    <tr><td class="p-2 font-bold text-white">14 min</td><td class="p-2 text-emerald-400">28</td><td class="p-2">25</td><td class="p-2">24</td></tr>
+                                    <tr><td class="p-2 font-bold text-white">16 min</td><td class="p-2 text-emerald-400">28</td><td class="p-2">25</td><td class="p-2">24</td></tr>
+                                    <tr><td class="p-2 font-bold text-white">18 min</td><td class="p-2 text-emerald-400">28</td><td class="p-2">24</td><td class="p-2">23</td></tr>
+                                    <tr><td class="p-2 font-bold text-white">20 min</td><td class="p-2 text-emerald-400 font-bold">27</td><td class="p-2">24</td><td class="p-2">23</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Observation Box -->
+            <div class="glass-card rounded-2xl p-6 border-l-4 border-l-amber-400 border-ecoBorder bg-amber-950/20">
+                <div class="flex items-start gap-4">
+                    <div class="p-2 rounded-xl bg-amber-500/20 text-amber-400">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h4 class="text-base font-bold text-amber-300 mb-1">Observação do Ensaio Térmico</h4>
+                        <p class="text-sm text-amber-100/90 leading-relaxed">
+                            Ao decorrer do teste foi observado que a cera de abelha da casinha com lã de ovelha apresentou derretimento apenas na região mais próxima da lâmpada. Na casinha com fibra de lã de ovelha também foi identificado um pequeno derretimento ao redor da lâmpada. Já na casinha com isopor, o material apresentou derretimento somente na área próxima à fonte de calor. A estabilização térmica da lã com cera na faixa de 28°C–35°C demonstra sua superioridade em manter o ambiente confortável e seguro para a avicultura inicial.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Canvas Interactive Temperature Curves -->
+            <div class="mt-10 glass-card rounded-3xl p-6 sm:p-8 border border-ecoBorder">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+                    <div>
+                        <h3 class="text-xl font-bold text-white">Visualização Gráfica do Desempenho Térmico</h3>
+                        <p class="text-xs text-ecoMuted">Curvas comparativas entre Lã+Cera, Fibra de Lã e Isopor</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <button onclick="renderChart('heating')" id="btnHeating" class="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-emerald-500 text-black shadow">Gráfico de Aquecimento</button>
+                        <button onclick="renderChart('cooling')" id="btnCooling" class="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-slate-800 text-slate-300 hover:text-white">Gráfico de Resfriamento</button>
+                    </div>
+                </div>
+
+                <div class="relative w-full h-72 sm:h-80 bg-slate-950/60 rounded-2xl p-4 border border-emerald-500/20">
+                    <canvas id="tempChart" class="w-full h-full"></canvas>
+                </div>
+
+                <!-- Legend -->
+                <div class="flex flex-wrap justify-center gap-6 mt-4 text-xs font-medium">
+                    <div class="flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-emerald-400"></span>
+                        <span class="text-slate-300">Lã de Ovelha com Cera</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-teal-400"></span>
+                        <span class="text-slate-300">Fibra de Lã</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-amber-400"></span>
+                        <span class="text-slate-300">Isopor Sintético</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Contato / Equipe / Rodapé -->
+        <section id="contato" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-ecoBorder/40">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- Coluna 1: Autores -->
+                <div class="glass-card p-6 sm:p-8 rounded-3xl border border-ecoBorder">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="p-3 rounded-2xl bg-emerald-500/20 text-ecoNeon">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">Equipe Autora</h3>
+                    </div>
+                    <ul class="space-y-3 text-sm text-slate-300">
+                        <li class="flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-ecoNeon"></span>
+                            <strong class="text-white">Alunos Pesquisadores:</strong> Felipe Gabriel Vieira e Emanuel Lima
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-ecoNeon"></span>
+                            <strong class="text-white">Professora Orientadora:</strong> Prof.ª Sandra Rozanski
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Coluna 2: Instituição -->
+                <div class="glass-card p-6 sm:p-8 rounded-3xl border border-ecoBorder">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="p-3 rounded-2xl bg-emerald-500/20 text-ecoNeon">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m3 0h1m-4-8a3 3 0 11-6 0 3 3 0 016 0zm6 0a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">Instituição de Ensino</h3>
+                    </div>
+                    <p class="text-sm text-slate-300 leading-relaxed">
+                        <strong class="text-white block text-base mb-1">Colégio Estadual de Segredo</strong>
+                        Desenvolvimento no laboratório de ciências com aplicação direta na agricultura e pecuária regional.
+                    </p>
+                </div>
+
+                <!-- Coluna 3: Endereço e Contato -->
+                <div class="glass-card p-6 sm:p-8 rounded-3xl border border-ecoBorder">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="p-3 rounded-2xl bg-emerald-500/20 text-ecoNeon">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">Localização & Contato</h3>
+                    </div>
+                    <ul class="space-y-2 text-sm text-slate-300">
+                        <li><strong class="text-white">Telefone:</strong> (42) 36391483</li>
+                        <li><strong class="text-white">Endereço:</strong> Rua General Osório, 360</li>
+                        <li><strong class="text-white">Município:</strong> Foz do Jordão - PR</li>
+                        <li><strong class="text-white">CEP:</strong> 85145-000</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black/90 border-t border-ecoBorder/50 py-8 text-center text-xs text-ecoMuted">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p>&copy; Eco Isolador de Pintinhos • Projeto Científico e Tecnológico</p>
+            <p class="text-slate-500">Desenvolvido com foco em ecologia, inovação rural e eficiência térmica</p>
+        </div>
+    </footer>
+
+    <!-- Floating Back to Top Button -->
+    <button id="btnBackToTop" onclick="scrollToTop()" class="fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full bg-emerald-500 hover:bg-emerald-400 text-black font-extrabold flex items-center justify-center shadow-2xl transition-all opacity-0 pointer-events-none hover:scale-110">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+        </svg>
+    </button>
+
+    <!-- Lightbox Modal -->
+    <div id="lightboxModal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden flex items-center justify-center p-4">
+        <div class="relative max-w-4xl w-full bg-[#070d0a] border border-ecoBorder rounded-3xl overflow-hidden shadow-2xl">
+            <button onclick="closeLightbox()" class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-slate-900/80 hover:bg-emerald-500 hover:text-black text-white flex items-center justify-center font-bold text-lg transition-all">✕</button>
+            
+            <div id="lightboxContent" class="p-8 text-center">
+                <!-- Content dynamically injected via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript App Engine -->
+    <script>
+        // Modal Lightbox Data mapping
+        const galleryDetails = {
+            'img1': {
+                title: 'Foto 1: Montagem e Corte do Papelão',
+                date: '13/08/2026',
+                desc: 'Registro fotográfico dos alunos efetuando a medição minuciosa, marcação e corte com estilete das placas reutilizadas de papelão no laboratório do colégio.',
+                badge: 'Construção Structural'
+            },
+            'img2': {
+                title: 'Foto 2: Estrutura Decorada Finalizada',
+                date: '27/08/2026',
+                desc: 'A casinha modelo pronta com acabamento em EVA azul, aplicações artísticas de pintinhos e ovelhas, além do isolamento vedado com lã e cera de abelha.',
+                badge: 'Protótipo Finalizado'
+            },
+            'img3': {
+                title: 'Foto 3: Ensaio de Inflamabilidade em Isopor',
+                date: '17/09/2026',
+                desc: 'Aplicação direta da chama sobre a amostra de isopor comercial. Observa-se a queima imediata com gotejamento de gotículas plásticas tóxicas.',
+                badge: 'Ensaio de Chama'
+            },
+            'img4': {
+                title: 'Foto 4: Amostras Comparativas Pós-Fogo',
+                date: '17/09/2026',
+                desc: 'Comparação física após os ensaios de fogo: o isopor totalmente preto e consumido versus a lã de ovelha com cera que apenas carbonizou superficialmente sem propagação.',
+                badge: 'Análise de Materiais'
+            },
+            'img5': {
+                title: 'Foto 5: Simulação de Umidade com Serradura',
+                date: '24/09/2026',
+                desc: 'Placas submetidas ao contato diário com serragem úmida e água borrifada para simular os dejetos da cama de aviário e avaliar proliferação de fungos.',
+                badge: 'Ensaio de Resistência Biological'
+            },
+            'img6': {
+                title: 'Foto 6: Monitoramento Térmico Interno',
+                date: '28/09/2026',
+                desc: 'Câmara interna equipada com lâmpada radiante e termômetro posicionado estrategicamente na altura equivalente ao pintinho para aferição rigorosa a cada 2 minutos.',
+                badge: 'Medição Térmica'
+            },
+            'img7': {
+                title: 'Foto 7: Revestimento Interno em Lã e Cera',
+                date: '28/09/2026',
+                desc: 'Visão detalhada da câmara de aquecimento interna revestida integralmente por lã bruta de ovelha aglutinada com cera natural de abelha.',
+                badge: 'Camada Isolante'
+            }
+        };
+
+        function openLightbox(id) {
+            const data = galleryDetails[id];
+            if (!data) return;
+
+            const modal = document.getElementById('lightboxModal');
+            const content = document.getElementById('lightboxContent');
+
+            content.innerHTML = `
+                <div class="mb-4">
+                    <span class="inline-block bg-emerald-500/20 text-ecoNeon text-xs font-bold px-3 py-1 rounded-full border border-emerald-500/40 mb-2">${data.badge}</span>
+                    <h3 class="text-2xl font-bold text-white">${data.title}</h3>
+                    <span class="text-xs text-ecoMuted">${data.date}</span>
+                </div>
+                <div class="w-full h-64 sm:h-80 bg-gradient-to-br from-emerald-950 via-slate-900 to-black rounded-2xl flex items-center justify-center p-6 mb-6 border border-emerald-500/30">
+                    <div class="text-center">
+                        <svg class="w-20 h-20 text-ecoNeon mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                        <span class="text-sm font-semibold text-emerald-300">Registro Fotográfico de Alta Resolução</span>
+                    </div>
+                </div>
+                <p class="text-slate-300 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto">${data.desc}</p>
+            `;
+
+            modal.classList.remove('hidden');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightboxModal').classList.add('hidden');
+        }
+
+        // Carregamento de vídeo local
+        function carregarVideoLocal(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const videoNode = document.getElementById('videoPlayer');
+                videoNode.src = URL.createObjectURL(file);
+                videoNode.play();
+            }
+        }
+
+        // Filtros do Diário de Bordo
+        function filtrarDiario(categoria, btn) {
+            const items = document.querySelectorAll('.diario-item');
+            const filterBtns = document.querySelectorAll('.btn-filter');
+
+            filterBtns.forEach(b => {
+                b.classList.remove('bg-emerald-500', 'text-black', 'shadow');
+                b.classList.add('text-slate-400');
+            });
+
+            btn.classList.add('bg-emerald-500', 'text-black', 'shadow');
+            btn.classList.remove('text-slate-400');
+
+            items.forEach(item => {
+                if (categoria === 'todos' || item.dataset.categoria === categoria) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Busca textual no Diário
+        function buscarDiario() {
+            const query = document.getElementById('diarioSearch').value.toLowerCase();
+            const items = document.querySelectorAll('.diario-item');
+
+            items.forEach(item => {
+                const text = item.innerText.toLowerCase();
+                if (text.includes(query)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Botão de voltar ao topo
+        window.addEventListener('scroll', () => {
+            const btn = document.getElementById('btnBackToTop');
+            if (window.scrollY > 400) {
+                btn.classList.remove('opacity-0', 'pointer-events-none');
+                btn.classList.add('opacity-100');
+            } else {
+                btn.classList.add('opacity-0', 'pointer-events-none');
+                btn.classList.remove('opacity-100');
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Interactive Canvas Temperature Chart Visualizer
+        let currentChartType = 'heating';
+
+        const dataHeating = {
+            labels: ['0m', '2m', '4m', '6m', '8m', '10m', '12m', '14m', '16m', '18m', '20m'],
+            woolWax: [20, 26, 29, 30, 33, 33, 34, 35, 40, 40, 37],
+            woolFiber: [20, 43, 57, 60, 66, 67, 65, 66, 68, 79, 72],
+            styrofoam: [20, 55, 61, 70, 75, 78, 77, 66, 78, 67, 53]
+        };
+
+        const dataCooling = {
+            labels: ['0m', '2m', '4m', '6m', '8m', '10m', '12m', '14m', '16m', '18m', '20m'],
+            woolWax: [31, 30, 30, 29, 28, 28, 28, 28, 28, 28, 27],
+            woolFiber: [60, 43, 36, 32, 29, 28, 26, 25, 25, 24, 24],
+            styrofoam: [47, 36, 31, 28, 26, 25, 24, 24, 24, 23, 23]
+        };
+
+        function renderChart(type) {
+            currentChartType = type;
+
+            const btnH = document.getElementById('btnHeating');
+            const btnC = document.getElementById('btnCooling');
+
+            if (type === 'heating') {
+                btnH.className = 'px-3.5 py-1.5 rounded-lg text-xs font-bold bg-emerald-500 text-black shadow';
+                btnC.className = 'px-3.5 py-1.5 rounded-lg text-xs font-bold bg-slate-800 text-slate-300 hover:text-white';
+            } else {
+                btnC.className = 'px-3.5 py-1.5 rounded-lg text-xs font-bold bg-emerald-500 text-black shadow';
+                btnH.className = 'px-3.5 py-1.5 rounded-lg text-xs font-bold bg-slate-800 text-slate-300 hover:text-white';
+            }
+
+            const canvas = document.getElementById('tempChart');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+
+            // Responsive scale
+            const dpr = window.devicePixelRatio || 1;
+            const rect = canvas.getBoundingClientRect();
+            canvas.width = rect.width * dpr;
+            canvas.height = rect.height * dpr;
+            ctx.scale(dpr, dpr);
+
+            const width = rect.width;
+            const height = rect.height;
+            ctx.clearRect(0, 0, width, height);
+
+            const dataset = type === 'heating' ? dataHeating : dataCooling;
+            const padding = 35;
+            const chartWidth = width - padding * 2;
+            const chartHeight = height - padding * 2;
+
+            const maxTemp = 85;
+            const minTemp = 15;
+
+            // Draw Grid Lines
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
+            ctx.lineWidth = 1;
+
+            for (let i = 0; i <= 4; i++) {
+                const y = padding + (chartHeight / 4) * i;
+                ctx.beginPath();
+                ctx.moveTo(padding, y);
+                ctx.lineTo(width - padding, y);
+                ctx.stroke();
+
+                // Y-Axis label
+                const tempVal = Math.round(maxTemp - ((maxTemp - minTemp) / 4) * i);
+                ctx.fillStyle = '#64748b';
+                ctx.font = '10px Inter';
+                ctx.fillText(`${tempVal}°C`, 5, y + 3);
+            }
+
+            // Draw series helper
+            function drawLine(points, color) {
+                ctx.beginPath();
+                ctx.strokeStyle = color;
+                ctx.lineWidth = 3;
+
+                points.forEach((val, idx) => {
+                    const x = padding + (chartWidth / (points.length - 1)) * idx;
+                    const y = padding + chartHeight - ((val - minTemp) / (maxTemp - minTemp)) * chartHeight;
+
+                    if (idx === 0) ctx.moveTo(x, y);
+                    else ctx.lineTo(x, y);
+                });
+
+                ctx.stroke();
+
+                // Draw points
+                points.forEach((val, idx) => {
+                    const x = padding + (chartWidth / (points.length - 1)) * idx;
+                    const y = padding + chartHeight - ((val - minTemp) / (maxTemp - minTemp)) * chartHeight;
+
+                    ctx.beginPath();
+                    ctx.arc(x, y, 4, 0, Math.PI * 2);
+                    ctx.fillStyle = color;
+                    ctx.fill();
+                    ctx.strokeStyle = '#070d0a';
+                    ctx.lineWidth = 1.5;
+                    ctx.stroke();
+                });
+            }
+
+            drawLine(dataset.woolWax, '#34d399');  // Emerald
+            drawLine(dataset.woolFiber, '#2dd4bf'); // Teal
+            drawLine(dataset.styrofoam, '#fbbf24');  // Amber
+        }
+
+        window.addEventListener('load', () => {
+            renderChart('heating');
+        });
+
+        window.addEventListener('resize', () => {
+            renderChart(currentChartType);
+        });
+    </script>
+</body>
+</html>
