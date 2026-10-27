@@ -437,12 +437,12 @@
                 </div>
 
             </div>
-<!-- Seção de Vídeo da Entrevista -->
+<!-- Seção de Vídeo da Entrevista: cartão separado da galeria e do diário -->
             <div class="mt-16 glass-card rounded-3xl p-6 sm:p-10 border border-ecoBorder">
-                <div class="flex flex-col lg:flex-row items-center gap-8">1
+                <div class="flex flex-col lg:flex-row items-center gap-8">
                     <div class="lg:w-1/2 space-y-4">
                         <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-ecoNeon text-xs font-bold uppercase">
-                            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                 <path d="M8 5v14l11-7z" />
                             </svg>
                             Entrevista em Vídeo
@@ -451,61 +451,27 @@
                         <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
                             Acompanhe a entrevista gravada no laboratório com os alunos autores, detalhando os desafios no controle de temperatura, o combate à umidade e a substituição viável do isopor.
                         </p>
-            <div class="flex flex-col lg:flex-row items-center gap-8">
-    <div class="lg:w-1/2 space-y-4">
-        <label class="inline-flex items-center gap-2 bg-emerald-500/20
-                      border border-emerald-400 text-emerald-300
-                      font-semibold px-4 py-2.5 rounded-xl text-sm cursor-pointer">
+                        
+                        <input
+                            id="videoUpload"
+                            type="file"
+                            accept="video/*"
+                            class="hidden"
+                            onchange="carregarVideoLocal(event)"
+                        >
+                    </div>
 
-            Carregar Vídeo Local (MP4)
-
-            <input
-                type="file"
-                accept="video/mp4,video/*"
-                class="hidden"
-                onchange="carregarVideoLocal(event)"
-            >
-        </label>
-    </div>
-
-    <div class="lg:w-1/2 w-full">
-        <div class="relative rounded-2xl overflow-hidden bg-slate-950
-                    border border-emerald-500/30 shadow-2xl">
-<video width="640" height="360" controls>
-    <source src="./entrevista.mp4 (1).mp4" type="video/mp4">
-    Seu navegador não suporta a reprodução desse vídeo.
-</video>
-
-        </div>
-    </div>
-</div>
-
-<script>
-function carregarVideoLocal(event) {
-    const arquivo = event.target.files[0];
-
-    if (!arquivo) {
-        return;
-    }
-
-    if (!arquivo.type.startsWith("video/")) {
-        alert("Selecione um arquivo de vídeo válido.");
-        return;
-    }
-
-    const video = document.getElementById("videoEntrevista");
-    const fonte = document.getElementById("fonteVideo");
-
-    const urlVideo = URL.createObjectURL(arquivo);
-
-    fonte.src = urlVideo;
-    video.load();
-    video.play().catch(() => {
-        // O navegador pode exigir que o usuário clique no botão Play.
-    });
-}
-</script>
-
+                    <div class="lg:w-1/2 w-full">
+                        <div class="relative overflow-hidden rounded-2xl border border-emerald-500/30 bg-slate-950 shadow-2xl">
+                            <video id="videoEntrevista" class="block h-auto w-full" controls>
+                                <source id="fonteVideo" src="./entrevista.mp4 (1).mp4" type="video/mp4">
+                                Seu navegador não suporta a reprodução desse vídeo.
+                            </video>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <!-- Seção Diário de Bordo -->
         <section id="diario" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1037,17 +1003,24 @@ function carregarVideoLocal(event) {
 
         // Carregamento de vídeo local
         function carregarVideoLocal(event) {
-            const file = event.target.files[0];
-            if (file) {
-                const videoNode = document.getElementById('videoPlayer');
-                videoNode.src = URL.createObjectURL(file);
-                videoNode.play();
-                <video width="640" height="360" controls>
-  <source src="entrevista.mp4 (1)" type="4">
- 
-</video>
+            const arquivo = event.target.files && event.target.files[0];
+            if (!arquivo) return;
 
+            if (!arquivo.type.startsWith("video/")) {
+                alert("Selecione um arquivo de vídeo válido.");
+                event.target.value = "";
+                return;
             }
+
+            const video = document.getElementById("videoEntrevista");
+            const fonte = document.getElementById("fonteVideo");
+            if (!video || !fonte) return;
+
+            fonte.src = URL.createObjectURL(arquivo);
+            video.load();
+            video.play().catch(() => {
+                // O navegador pode exigir que o usuário clique no botão Play.
+            });
         }
 
         // Filtros do Diário de Bordo
